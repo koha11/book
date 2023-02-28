@@ -1,0 +1,538 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html{
+  font-size: 16px;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+:root{
+  --time-to-next-page: 3s;
+}
+
+.main{
+  /* background-color: black; */
+}
+
+.diary{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 657px;
+  position: relative;
+}
+
+[class$=-diary]{   /* select moi element ket thuc bang -diary  */
+  background-color: burlywood;
+  height: 600px;
+
+}
+
+/* BIA SACH  */
+.pre-diary{
+  display: none;
+  width: 400px;
+  height: 600px;
+  cursor: pointer;
+  z-index: 2;
+  box-shadow: 0 0 10px 1px white;
+  transition: opacity 3s linear;
+  background-color: burlywood;
+
+}
+@keyframes ToTheRight {
+  from{
+    transform: translateX(0);
+  }
+  to{
+    transform: translateX(200px);
+  }
+}
+@keyframes LatSach1 {
+  from{   
+    transform: translateX(200px);
+    border-bottom-right-radius: 0;
+  }
+  to{
+    transform: translateX(200px);
+    border-bottom-right-radius: 1000px 100%;
+  }
+}
+@keyframes FadeOut1 {
+  from{
+    opacity: 1;
+    transform: translateX(200px);
+    border-bottom-right-radius: 1000px 100%;
+  }
+  to{
+    opacity: .5;
+    transform: translateX(200px);
+    border-bottom-right-radius: 1000px 100%;
+  }
+}
+
+.pre-fake-background{
+  position:fixed ;
+  background-color: burlywood;
+  z-index: 1;
+  transform: translateX(200px);
+  width: 400px;
+  height: 600px;
+}
+
+
+
+
+/* NOI DUNG BEN TRONG SACH  */
+.main-diary{
+  width: 800px;
+  height: 600px;
+  position: relative;
+  z-index: 2;
+  box-shadow: 0px 0px 20px 10px rgb(0 0 0 / 60%);
+  /* box-shadow: 0 0 5px 5px rgba(0,0,0,0.8); */
+  
+}
+.main-diary::before{
+  content: "";
+  display: block;
+  background-color: black;
+  height: 600px;
+  width: 4px;
+  margin: auto;
+  box-shadow: 5px 5px 50px 30px black;
+  opacity: .5;
+}
+
+.main-fake-background{
+  position:fixed ;
+  background-color: burlywood;
+  z-index: 1;
+  width: 800px;
+  height: 600px;
+  box-shadow: 0 0 10px 1px white;
+}
+
+/* CAC TRANG SACH  */
+[class*='page-']{
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: inherit;
+  width: inherit;
+  transition: opacity var(--time-to-next-page) linear;
+  display: none;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: calc(100%/3) calc(100%/3) calc(100%/3);
+}
+
+[class*='diary-content']{
+  /* position: absolute; */
+  /* width: 100%; */
+  display: flex;
+  align-items: center;
+}
+.diary-content-1, .diary-content-2{
+  margin-top: 10px;
+}
+.diary-content-5, .diary-content-6{
+  margin-bottom: 10px;
+}
+.diary-img{
+  box-shadow:  0 0 20px 14px rgb(0 0 0 / 20%);
+  cursor: pointer;
+  transition: transform 1s linear;
+}
+.diary-img:hover{
+  transform: scale(1.05);
+}
+
+.img-vertical{
+  height: 96%;
+  /* margin-left: 20px; */
+}
+
+.img-horizontal{
+  width: 70%;
+}
+
+/* .diary-par{
+  flex: 1;
+  margin: 5px;
+} */
+
+/* PAGE 1  */
+.page-1{
+}
+.page-1 .diary-content-1{
+}
+
+/* PAGE 2 */
+.page-2 .diary-content-3 img{
+  width: 60%;
+}
+
+/* PAGE 3 */
+.page-3 .diary-content-2 img{
+  margin-top: 100px;
+  height: 140%;
+}
+.page-3 .diary-content-3 img{
+  margin-top: 100px;
+  height: 110%;
+  margin-bottom: 90px;
+}
+.page-3 .diary-content-4 video{
+  height: 110%;
+}
+.page-3 .diary-content-6 img{
+  margin-bottom: 20px
+}
+.page-3 .diary-content-5 img{
+  height: 100%;
+  margin-left: 40px;
+  margin-bottom: 20px
+}
+
+/* PAGE 4  */
+
+/* PAGE 5  */
+.page-5 .diary-content-1 img{
+  height: 110%;
+  margin-top: 20px;
+}
+.page-5 .diary-content-3 img{
+  height: 110%;
+  margin-right: 5px;
+}
+.page-5 .diary-content-4 img{
+  width: 60%;
+}
+.page-5 .diary-content-5 img{
+  margin-bottom: 20px;
+  height: 110%;
+}
+
+/* PAGE 6  */
+.page-6 .diary-content-1 img, .page-6 .diary-content-2 img{
+  width: 60%;
+  margin-top: 20px;
+}
+.page-6 .diary-content-4 video{
+  margin-top: 20px;
+}
+
+/* PAGE 7  */
+.page-7 .diary-content-2 img{
+  width: 60%;
+}
+
+/* PAGE 8  */
+.page-8 .diary-content-1 img, .page-8 .diary-content-3 img{
+  width: 60%;
+}
+
+/* PAGE 9  */
+.page-9 .diary-content-1 img{
+  margin-top: 20px;
+  height: 110%;
+}
+.page-9 .diary-content-3 img{
+  margin-left: 40px;
+  height: 110%;
+}
+.page-9 .diary-content-4 img{
+  margin-left: 80px;
+  height: 110%;
+}
+.page-9 .diary-content-5 img{
+  margin-bottom: 20px;
+  height: 110%;
+}
+.page-9 .diary-content-6 img{
+  margin-bottom: 40px;
+  height: 120%;
+}
+
+/* PAGE 10  */
+.page-10 .diary-content-3 img{
+  height: 110%;
+}
+.page-10 .diary-content-4 img{
+  width: 60%;
+}
+.page-10 .diary-content-5 video{
+  height: 110%;
+  margin-left: 40px;
+  margin-bottom: 20px;
+}
+
+/* PAGE 11  */
+.page-11 .diary-content-1 video{
+  margin-top: 20px;
+  height: 110%;
+}
+.page-11 .diary-content-2 img{
+  height: 110%;
+  margin-top: 30px;
+}
+.page-11 .diary-content-3 img{
+  height: 120%;
+  margin-left: 30px;
+}
+.page-11 .diary-content-4 video{
+  height: 110%;
+  margin-left: 30px;
+  margin-bottom: 20px;
+}
+.page-11 .diary-content-5 video{
+  height: 110%;
+  margin-left: 30px;
+  margin-bottom: 30px;
+}
+.page-11 .diary-content-6 img{
+  height: 120%;
+  margin-bottom: 60px;
+  margin-left: 20px;
+}
+
+/* PAGE 12  */
+.page-12 .diary-content-1 video{
+  margin-top: 20px;
+  margin-left: 20px;
+  height: 110%;
+}
+.page-12 .diary-content-2 img{
+  margin-top: 20px;
+  width: 60%;
+}
+.page-12 .diary-content-3 img{
+  margin-top: 20px;
+  margin-left: 40px;
+  height: 100%;
+}
+.page-12 .diary-content-5 video{
+  margin-bottom: 20px;
+  margin-left: 40px;
+  height: 110%;
+}
+
+
+
+
+
+
+/* MAT SAU SACH  */
+.post-diary{
+  /* width: 800px; */
+}
+
+/* NAVIGATION PAGE  */
+.next-page{
+  width: 200px;
+  height: 250px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  background-color: burlywood;
+  cursor: pointer;
+  transition: border-bottom-right-radius 1s linear;
+  box-shadow: 22px 22px 20px 1px rgb(0 0 0 / 40%);
+  animation: linear var(--time-to-next-page);
+  clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+}
+.next-page:hover{
+  border-bottom-right-radius: 300px 80%; 
+}
+
+.prev-page{
+  width: 200px;
+  height: 250px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  background-color: burlywood;
+  cursor: pointer;
+  transition: border-bottom-left-radius 1s linear;
+  box-shadow: 0px 0px 20px 20px rgb(0 0 0 / 40%);
+  animation: linear var(--time-to-next-page);
+  clip-path: polygon(0 0, 0% 100%, 100% 100%);
+}
+.prev-page:hover{
+  border-bottom-left-radius: 300px 80%; 
+}
+
+@keyframes LatSach2 {
+  from{
+    height: 250px;
+    width: 200px;
+    border-bottom-right-radius: 0;
+  }
+  to{
+    height: 600px;
+    width: 300px;
+    border-bottom-right-radius: 300px 80%; 
+  }
+}
+@keyframes LatSach3 {
+  from{
+    height: 250px;
+    width: 200px;
+    border-bottom-left-radius: 0;
+  }
+  to{
+    height: 600px;
+    width: 300px;
+    border-bottom-left-radius: 300px 80%; 
+  }
+}
+
+/* PoP up description IMG  */
+.img-description-container{
+  z-index: 20;
+  background-color: rgba(0, 0, 0, 0.9);
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  right: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-description{
+  background-color: rgba(155, 140, 140, 0.4);
+  width: 1000px;
+  height: 600px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.img-description-slider{
+  order: 1;
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+}
+.img-description-slider::-webkit-scrollbar{
+  display: none;
+}
+.img-description-items{
+  flex: 1;
+  height: calc(100%/3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.img-description-items img{
+  /* height: 80%; */
+  filter: brightness(0.4);
+  cursor: pointer;
+  width: 80%;
+}
+.img-description-items img:hover{
+  transform: scale(1.05);
+}
+
+
+.img-description-main-item-container{
+  order: 2;
+  flex: 4;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+.img-description-main-item-container::before{
+  content: "";
+  display: block;
+  background-color: white;
+  opacity: 0.7;
+  width: 1px;
+  height: 80%;
+  position: absolute;
+  left: -2%;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.img-description-main-item-container::after{
+  content: "";
+  display: block;
+  background-color: white;
+  opacity: 0.7;
+  width: 1px;
+  height: 80%;
+  position: absolute;
+  right: -2%;
+  top: 50%;
+  transform: translateY(-50%);  
+}
+.img-description-main-item-container img{
+  /* height: 90%; */
+}
+.img-description-horizontal{
+  width: 100%;
+}
+
+
+.img-description-content{
+  order: 3;
+  flex: 4;
+  height: 75%;
+  margin-left: 15px;
+  margin-right: 5px;
+  letter-spacing: 1px;
+}
+
+/* Function classes  */
+.hidden{
+  display: none;
+}
+.open{
+  display: unset;
+}
+.open-page{
+  display: grid !important;
+}
+
+.flash-bang{
+  opacity: .9;
+  z-index: 10;
+  border-radius: 100px;
+  position: fixed;
+  animation: var(--time-to-next-page) linear;
+}
+@keyframes FlashOut {
+  from{
+    box-shadow: none;
+  }
+  to{
+    box-shadow: 0px 0px 100px 10000px white;
+  }
+}
+@keyframes FlashIn {
+  from{
+    box-shadow: 0px 0px 100px 10000px white;
+  }
+  to{
+    box-sizing: none;
+  }
+}
+
+.ml20{
+  transform: translateX(30px);
+}
+.ml90{
+  transform: translateX(90px);
+}
+.ml210{
+  transform: translateX(210px);
+}
